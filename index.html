@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="img/icon_cupcake.png" />
+    <title>Doce perfeito</title>
+</head>
+
+<body>
+    <header>
+        <h1>Seu docinho ideal</h1>
+    </header>
+    <nav>
+    </nav>
+
+
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <h2>Iremos escolher o doce que combina com você <br> de acordo com seu número da sorte!</h2>
+                <p>Digite seu número da sorte:</p>
+                <input type="text" id="numero" />
+                <button class="btn" onclick="verificarNumero()">Verificar</button>
+                <p id="mensagem"></p>
+                <p id="doce"></p>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <h2>Quantos doces você deve comprar? </h2>
+                <p>Digite um número e veja quantas vezes ele aparece:</p>
+                <input type="text" id="num">
+                <button class="btn" onclick="verificarDoce()">Verificar</button>
+                <p id="msg"></p>
+                <p id="contagem1"></p>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <div class="carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-item">
+                            <img src="img/cupcake2.png" alt="Imagem 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/brownie.png" alt="Imagem 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/cookie.png" alt="Imagem 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/brigadeiro.png" alt="Imagem 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/sonho.png" alt="Imagem 5">
+                        </div>
+                    </div>
+                    <button class="prev" onclick="prevSlide()">❮</button>
+                    <button class="next" onclick="nextSlide()">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <footer>
+        <p> Ana Júlia Miguel Silva - &copyTodos os direitos reservados <br> Trabalho acadêmico - sem fins lucrativos
+        </p>
+    </footer>
+
+    <script>
+        function verificarNumero() {
+            var numero = parseInt(document.getElementById("numero").value);
+            var mensagem = document.getElementById("mensagem");
+            if (numero >= 0 && numero < 2) {
+                mensagem.innerHTML = "Seu doce ideal é:  Cupcake!";
+            }
+            else if (numero >= 2 && numero <= 4) {
+                mensagem.innerHTML = " Seu doce ideal é:  Brownie!";
+            }
+
+            else if (numero >= 5 && numero < 7) {
+                mensagem.innerHTML = "Seu doce ideal é:  Cookie!";
+            }
+            else if (numero >= 7 && numero <= 9) {
+                mensagem.innerHTML = "Seu doce ideal é:  Brigadeiro!";
+            }
+            else if (numero >= 10) {
+                mensagem.innerHTML = "Seu doce ideal é:  Sonho!";
+            }
+
+
+        }
+
+        function verificarDoce() {
+            var num = parseInt(document.getElementById("num").value);
+            var msg = document.getElementById("msg");
+            if (num >= 0 && num < 2) {
+                msg = "Cupcake!";
+            }
+            else if (num >= 2 && num <= 4) {
+                msg = "Brownie!";
+            }
+
+            else if (num >= 5 && num < 7) {
+                msg = "Cookie!";
+            }
+            else if (num >= 7 && num <= 9) {
+                msg = "Brigadeiro!";
+            }
+            else if (num >= 10) {
+                msg = "Sonho!";
+            }
+
+            var i = 0;
+            var contagem1 = document.getElementById("contagem1");
+            contagem1.innerHTML = "";
+            while (i <= num - 1) {
+                contagem1.innerHTML += msg + " . ";
+                i++;
+            }
+
+
+        }
+
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.querySelectorAll('.carousel-item');
+            if (slideIndex >= slides.length) {
+                 slideIndex = 0 
+            }
+
+            if (slideIndex < 0) { 
+                slideIndex = slides.length - 1 
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            slides[slideIndex].style.display = "block";
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlides();
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlides();
+        }
+
+
+    </script>
+</body>
+
+</html>
